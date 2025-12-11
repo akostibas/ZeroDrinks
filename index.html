@@ -438,6 +438,40 @@
             margin-left: var(--spacing-xs);
             vertical-align: middle;
         }
+
+        /* Screenshots */
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius-lg);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-container {
+            margin-top: var(--spacing-lg);
+            text-align: center;
+        }
+
+        .screenshot-phone {
+            max-width: 300px;
+        }
+
+        .screenshot-watch {
+            max-width: 200px;
+        }
+
+        .screenshot-automation {
+            max-width: 400px;
+        }
+
+        .screenshots-row {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: var(--spacing-md);
+        }
     </style>
 </head>
 <body>
@@ -527,6 +561,14 @@
                     <p>After installation, add the shortcut to your home screen or watch face. Each time you have a drink, simply tap the shortcut. That's it!</p>
                 </div>
             </div>
+            <div class="screenshots-row">
+                <div>
+                    <img src="assets/iphone-screenshot.jpg" alt="Log Drink shortcut on iPhone home screen" class="screenshot screenshot-phone">
+                </div>
+                <div>
+                    <img src="assets/watch-screenshot.PNG" alt="Log Drink shortcut on Apple Watch" class="screenshot screenshot-watch">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -609,6 +651,9 @@
                     <li>Tap "Done"</li>
                 </ol>
                 <p>With confirmation enabled, you'll receive a notification each morning that you can tap to run the shortcut and see your stats.</p>
+                <div class="screenshot-container">
+                    <img src="assets/automation-setup.PNG" alt="Automation setup for Zero Drinks shortcut" class="screenshot screenshot-automation">
+                </div>
             </div>
         </div>
     </section>
