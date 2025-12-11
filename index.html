@@ -269,41 +269,16 @@
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
         }
 
+        .apple-doc-link {
+            font-size: 14px;
+            font-weight: normal;
+            color: var(--color-text-secondary);
+            margin-left: var(--spacing-xs);
+        }
+
         /* Installation Section */
         .installation {
             background-color: var(--color-bg);
-        }
-
-        .installation-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step-number {
-            display: inline-block;
-            width: 48px;
-            height: 48px;
-            line-height: 48px;
-            border-radius: 50%;
-            background-color: var(--color-primary);
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .step h3 {
-            font-size: 20px;
-        }
-
-        .step p {
-            font-size: 16px;
         }
 
         /* About Section */
@@ -463,37 +438,15 @@
     <section id="installation" class="installation">
         <div class="container">
             <h2 style="text-align: center;">How to Install</h2>
-            <div class="installation-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Download</h3>
-                    <p>Tap the download link above on your iPhone or iPad</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Add Shortcut</h3>
-                    <p>Review the shortcut actions and tap "Add Shortcut"</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Grant Permissions</h3>
-                    <p>Allow access to Apple Health when prompted</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Customize</h3>
-                    <p>Add to home screen, lock screen, or watch for quick access</p>
-                </div>
-            </div>
 
-            <div style="margin-top: var(--spacing-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
-                <h3>Adding to Home Screen</h3>
+            <div style="max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3>Adding to Home Screen <a href="https://support.apple.com/guide/shortcuts/add-a-shortcut-to-the-home-screen-apd735880972/ios" class="apple-doc-link" target="_blank" rel="noopener">(Apple's guide)</a></h3>
                 <p>Long press the shortcut in the Shortcuts app, select "Details", then "Add to Home Screen". You can customize the icon and name.</p>
 
-                <h3 style="margin-top: var(--spacing-md);">Adding to Apple Watch</h3>
+                <h3 style="margin-top: var(--spacing-md);">Adding to Apple Watch <a href="https://support.apple.com/guide/shortcuts/run-shortcuts-from-apple-watch-apd5888b0858/ios" class="apple-doc-link" target="_blank" rel="noopener">(Apple's guide)</a></h3>
                 <p>In the Watch app on your iPhone, scroll down to Shortcuts and enable "Show on Apple Watch". You can also add shortcuts to watch face complications.</p>
 
-                <h3 style="margin-top: var(--spacing-md);">Setting Up Automation for Zero Drinks</h3>
+                <h3 style="margin-top: var(--spacing-md);">Setting Up Automation for Zero Drinks <a href="https://support.apple.com/guide/shortcuts/create-a-new-personal-automation-apdfbdbd7123/ios" class="apple-doc-link" target="_blank" rel="noopener">(Apple's guide)</a></h3>
                 <p><strong>Important:</strong> Zero Drinks requires creating an automation to run daily. Here's how:</p>
                 <ol style="text-align: left; max-width: 600px; margin: var(--spacing-sm) auto; color: var(--color-text-secondary); line-height: 1.8;">
                     <li>Open the Shortcuts app and tap the "Automation" tab</li>
