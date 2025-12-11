@@ -400,19 +400,6 @@
             }
         }
 
-        /* Coming Soon Badge */
-        .coming-soon {
-            display: inline-block;
-            background-color: var(--color-warning);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 12px;
-            font-weight: 600;
-            margin-left: var(--spacing-xs);
-            vertical-align: middle;
-        }
-
         /* Screenshots */
         .screenshot {
             max-width: 100%;
@@ -472,8 +459,8 @@
             <p class="tagline">Apple Health shortcuts for tracking alcohol consumption</p>
             <p class="intro">Track your drinking habits directly in Apple Health with two shortcuts that work together. Log Drink provides one-tap logging, while Zero Drinks calculates your average and maintains complete data—all while keeping everything completely private on your device.</p>
             <div class="cta-buttons">
-                <a href="#log-drink" class="btn btn-primary">Download Log Drink</a>
-                <a href="#zero-drinks" class="btn btn-primary">Download Zero Drinks</a>
+                <a href="https://www.icloud.com/shortcuts/b6b938233f084e0daa60e4f3ed38e02a" class="btn btn-primary">Download Log Drink</a>
+                <a href="https://www.icloud.com/shortcuts/ee4f5161e49b4a73895d9a68fd5ac504" class="btn btn-primary">Download Zero Drinks</a>
             </div>
         </div>
     </section>
@@ -486,8 +473,8 @@
                     <h2><span class="shortcut-icon">🍺</span> Log Drink</h2>
                     <p>One tap adds a standard drink to Apple Health.</p>
                     <p>Add this to your iPhone home screen, lock screen, or Apple Watch complication so you can track in the moment without opening any apps.</p>
-                    <a href="#" class="btn btn-primary download-btn" data-shortcut="log-drink">
-                        Download Log Drink <span class="coming-soon">Coming Soon</span>
+                    <a href="https://www.icloud.com/shortcuts/b6b938233f084e0daa60e4f3ed38e02a" class="btn btn-primary">
+                        Download Log Drink
                     </a>
                 </div>
                 <div class="shortcut-details">
@@ -524,8 +511,8 @@
                     <h2><span class="shortcut-icon">📊</span> Zero Drinks</h2>
                     <p>Calculates your rolling average over a configurable time window.</p>
                     <p>Automatically fills in zero-drink days (which Apple Health normally ignores), giving you accurate averages. Shows a positive message when you had zero drinks yesterday, or asks "How do you feel?" when you did drink.</p>
-                    <a href="#" class="btn btn-primary download-btn" data-shortcut="zero-drinks">
-                        Download Zero Drinks <span class="coming-soon">Coming Soon</span>
+                    <a href="https://www.icloud.com/shortcuts/ee4f5161e49b4a73895d9a68fd5ac504" class="btn btn-primary">
+                        Download Zero Drinks
                     </a>
                 </div>
                 <div class="shortcut-details">
@@ -645,16 +632,6 @@
                         block: 'start'
                     });
                 }
-            });
-        });
-
-        // Placeholder functionality for download buttons
-        document.querySelectorAll('.download-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const shortcutName = btn.dataset.shortcut;
-                const displayName = shortcutName === 'log-drink' ? 'Log Drink' : 'Zero Drinks';
-                alert(`The ${displayName} shortcut will be available soon!\n\nStar the GitHub repository to get notified when it's ready for download.`);
             });
         });
 
