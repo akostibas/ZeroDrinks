@@ -215,40 +215,6 @@
             transform: translateY(-2px);
         }
 
-        /* Feature Cards */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-
-        .feature-card {
-            background-color: white;
-            border-radius: var(--border-radius-lg);
-            padding: var(--spacing-md);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-        }
-
-        .feature-icon {
-            font-size: 64px;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .feature-card h3 {
-            color: var(--color-text-primary);
-        }
-
-        .feature-card p {
-            font-size: 16px;
-        }
-
         .feature-list {
             list-style: none;
             margin-top: var(--spacing-sm);
@@ -480,7 +446,6 @@
         <div class="container">
             <div class="logo">🍺 Drink Tracking</div>
             <nav>
-                <a href="#features">Features</a>
                 <a href="#log-drink">Log Drink</a>
                 <a href="#zero-drinks">Zero Drinks</a>
                 <a href="#installation">Install</a>
@@ -498,38 +463,6 @@
             <div class="cta-buttons">
                 <a href="#log-drink" class="btn btn-primary">Download Log Drink</a>
                 <a href="#zero-drinks" class="btn btn-primary">Download Zero Drinks</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Overview -->
-    <section id="features">
-        <div class="container">
-            <h2 style="text-align: center;">Two Shortcuts That Work Together</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg); font-size: 20px;">Use both shortcuts together: Log Drink ensures your Apple Health data is accurate, and Zero Drinks reads that data to calculate your average and fill in missing zero-drink days.</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🍺</div>
-                    <h3>Log Drink</h3>
-                    <p>Creates the data</p>
-                    <ul class="feature-list">
-                        <li>Add to home screen or watch</li>
-                        <li>Log drinks in seconds</li>
-                        <li>Ensures accurate Apple Health data</li>
-                        <li>No configuration needed</li>
-                    </ul>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Zero Drinks</h3>
-                    <p>Reads and maintains the data</p>
-                    <ul class="feature-list">
-                        <li>Sliding window averages</li>
-                        <li>Fills in zero-drink days</li>
-                        <li>Positive reinforcement</li>
-                        <li>Reflective prompts</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>
