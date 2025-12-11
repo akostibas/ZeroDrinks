@@ -131,14 +131,6 @@
             font-size: 20px;
             font-weight: 600;
             color: var(--color-text-primary);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo-image {
-            height: 32px;
-            width: auto;
         }
 
         nav {
@@ -269,6 +261,15 @@
             font-size: 48px;
         }
 
+        .shortcut-screenshot {
+            float: right;
+            max-width: 200px;
+            margin-left: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+        }
+
         /* Installation Section */
         .installation {
             background-color: var(--color-bg);
@@ -386,6 +387,13 @@
             section {
                 padding: var(--spacing-lg) 0;
             }
+
+            .shortcut-screenshot {
+                float: none;
+                max-width: 250px;
+                margin: 0 auto var(--spacing-md);
+                display: block;
+            }
         }
 
     </style>
@@ -394,10 +402,7 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo">
-                <img src="assets/zero-drinks-logo.png" alt="Zero Drinks Logo" class="logo-image">
-                Zero Drinks
-            </div>
+            <div class="logo">Zero Drinks</div>
             <nav>
                 <a href="#log-drink">Log Drink</a>
                 <a href="#zero-drinks">Zero Drinks</a>
@@ -425,6 +430,7 @@
     <!-- Log Drink Section -->
     <section id="log-drink" class="shortcut-section">
         <div class="container">
+            <img src="assets/watch-screenshot-2.PNG" alt="Log Drink on Apple Watch" class="shortcut-screenshot">
             <h2><span class="shortcut-icon">🍺</span> Log Drink</h2>
             <p>One tap adds a standard drink to Apple Health. Add this to your iPhone home screen, lock screen, or Apple Watch complication so you can track in the moment without opening any apps. No configuration required.</p>
 
@@ -440,6 +446,7 @@
     <!-- Zero Drinks Section -->
     <section id="zero-drinks" class="shortcut-section">
         <div class="container">
+            <img src="assets/iphone-zero-drinks-notification.PNG" alt="Zero Drinks notification on iPhone" class="shortcut-screenshot">
             <h2><span class="shortcut-icon">📊</span> Zero Drinks</h2>
             <p>Calculates your rolling average over a configurable time window (7, 14, or 30 days). Automatically fills in zero-drink days (which Apple Health normally ignores), giving you accurate averages. Shows a positive message when you had zero drinks yesterday, or asks "How do you feel?" when you did drink.</p>
 
