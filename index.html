@@ -163,6 +163,12 @@
             background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
         }
 
+        .hero-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: var(--spacing-md);
+        }
+
         .hero h1 {
             margin-bottom: var(--spacing-sm);
         }
@@ -253,14 +259,7 @@
             background-color: var(--color-bg);
         }
 
-        .shortcut-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-lg);
-            align-items: start;
-        }
-
-        .shortcut-info h2 {
+        .shortcut-section h2 {
             display: flex;
             align-items: center;
             gap: var(--spacing-sm);
@@ -268,13 +267,6 @@
 
         .shortcut-icon {
             font-size: 48px;
-        }
-
-        .shortcut-details {
-            background-color: white;
-            border-radius: var(--border-radius-lg);
-            padding: var(--spacing-md);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         /* Installation Section */
@@ -383,10 +375,6 @@
                 display: none;
             }
 
-            .shortcut-content {
-                grid-template-columns: 1fr;
-            }
-
             .cta-buttons {
                 flex-direction: column;
             }
@@ -400,39 +388,6 @@
             }
         }
 
-        /* Screenshots */
-        .screenshot {
-            max-width: 100%;
-            height: auto;
-            border-radius: var(--border-radius-lg);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-        }
-
-        .screenshot-container {
-            margin-top: var(--spacing-lg);
-            text-align: center;
-        }
-
-        .screenshot-phone {
-            max-width: 300px;
-        }
-
-        .screenshot-watch {
-            max-width: 200px;
-        }
-
-        .screenshot-automation {
-            max-width: 400px;
-        }
-
-        .screenshots-row {
-            display: flex;
-            gap: var(--spacing-md);
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            margin-top: var(--spacing-md);
-        }
     </style>
 </head>
 <body>
@@ -455,6 +410,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
+            <img src="assets/zero-drinks-logo.png" alt="Zero Drinks Logo" class="hero-logo">
             <h1>Zero Drinks</h1>
             <p class="tagline">Apple Health shortcuts for tracking alcohol consumption</p>
             <p class="intro">Track your drinking habits directly in Apple Health with two shortcuts that work together. Log Drink provides one-tap logging, while Zero Drinks calculates your average and maintains complete data—all while keeping everything completely private on your device.</p>
@@ -462,76 +418,38 @@
                 <a href="https://www.icloud.com/shortcuts/b6b938233f084e0daa60e4f3ed38e02a" class="btn btn-primary">Download Log Drink</a>
                 <a href="https://www.icloud.com/shortcuts/ee4f5161e49b4a73895d9a68fd5ac504" class="btn btn-primary">Download Zero Drinks</a>
             </div>
+            <p style="margin-top: var(--spacing-md);"><a href="#installation" style="font-size: 16px;">How to install →</a></p>
         </div>
     </section>
 
     <!-- Log Drink Section -->
     <section id="log-drink" class="shortcut-section">
         <div class="container">
-            <div class="shortcut-content">
-                <div class="shortcut-info">
-                    <h2><span class="shortcut-icon">🍺</span> Log Drink</h2>
-                    <p>One tap adds a standard drink to Apple Health.</p>
-                    <p>Add this to your iPhone home screen, lock screen, or Apple Watch complication so you can track in the moment without opening any apps.</p>
-                    <a href="https://www.icloud.com/shortcuts/b6b938233f084e0daa60e4f3ed38e02a" class="btn btn-primary">
-                        Download Log Drink
-                    </a>
-                </div>
-                <div class="shortcut-details">
-                    <h3>Key Features</h3>
-                    <ul class="feature-list">
-                        <li>One-tap logging</li>
-                        <li>Adds 1 standard drink to Apple Health</li>
-                        <li>Works from home screen</li>
-                        <li>Works from lock screen</li>
-                        <li>Works from Apple Watch</li>
-                        <li>No configuration required</li>
-                    </ul>
+            <h2><span class="shortcut-icon">🍺</span> Log Drink</h2>
+            <p>One tap adds a standard drink to Apple Health. Add this to your iPhone home screen, lock screen, or Apple Watch complication so you can track in the moment without opening any apps. No configuration required.</p>
 
-                    <h3 style="margin-top: var(--spacing-md);">How to Use</h3>
-                    <p>After installation, add the shortcut to your home screen or watch face. Each time you have a drink, simply tap the shortcut. That's it!</p>
-                </div>
-            </div>
-            <div class="screenshots-row">
-                <div>
-                    <img src="assets/iphone-screenshot.jpg" alt="Log Drink shortcut on iPhone home screen" class="screenshot screenshot-phone">
-                </div>
-                <div>
-                    <img src="assets/watch-screenshot.PNG" alt="Log Drink shortcut on Apple Watch" class="screenshot screenshot-watch">
-                </div>
-            </div>
+            <h3 style="margin-top: var(--spacing-md);">How to Use</h3>
+            <p>After installation, add the shortcut to your home screen or watch face. Each time you have a drink, simply tap the shortcut. That's it!</p>
+
+            <a href="https://www.icloud.com/shortcuts/b6b938233f084e0daa60e4f3ed38e02a" class="btn btn-primary" style="margin-top: var(--spacing-md);">
+                Download Log Drink
+            </a>
         </div>
     </section>
 
     <!-- Zero Drinks Section -->
     <section id="zero-drinks" class="shortcut-section">
         <div class="container">
-            <div class="shortcut-content">
-                <div class="shortcut-info">
-                    <h2><span class="shortcut-icon">📊</span> Zero Drinks</h2>
-                    <p>Calculates your rolling average over a configurable time window.</p>
-                    <p>Automatically fills in zero-drink days (which Apple Health normally ignores), giving you accurate averages. Shows a positive message when you had zero drinks yesterday, or asks "How do you feel?" when you did drink.</p>
-                    <a href="https://www.icloud.com/shortcuts/ee4f5161e49b4a73895d9a68fd5ac504" class="btn btn-primary">
-                        Download Zero Drinks
-                    </a>
-                </div>
-                <div class="shortcut-details">
-                    <h3>Key Features</h3>
-                    <ul class="feature-list">
-                        <li>Configurable sliding window (7, 14, or 30 days)</li>
-                        <li>Automatically adds "0 drinks" for missing days</li>
-                        <li>Calculates your rolling average</li>
-                        <li>Positive messages for zero-drink days</li>
-                        <li>Reflective prompts after drinking</li>
-                        <li>Runs daily via automation</li>
-                    </ul>
+            <h2><span class="shortcut-icon">📊</span> Zero Drinks</h2>
+            <p>Calculates your rolling average over a configurable time window (7, 14, or 30 days). Automatically fills in zero-drink days (which Apple Health normally ignores), giving you accurate averages. Shows a positive message when you had zero drinks yesterday, or asks "How do you feel?" when you did drink.</p>
 
-                    <h3 style="margin-top: var(--spacing-md);">How It Works</h3>
-                    <p>This shortcut requires setting up a daily automation to run automatically. If you had zero drinks yesterday, you'll get a positive message. If you did drink, it asks "How do you feel?" along with your rolling average.</p>
-                    <p>The shortcut ensures Apple Health has complete data by adding zero-drink entries for days you didn't log anything, giving you accurate trends and averages.</p>
-                    <p><strong>Recommended automation:</strong> Run 1 hour after sunrise with confirmation enabled.</p>
-                </div>
-            </div>
+            <h3 style="margin-top: var(--spacing-md);">How It Works</h3>
+            <p>This shortcut requires setting up a daily automation to run automatically. The shortcut ensures Apple Health has complete data by adding zero-drink entries for days you didn't log anything, giving you accurate averages.</p>
+            <p><strong>Recommended automation:</strong> Run 1 hour after sunrise with confirmation enabled.</p>
+
+            <a href="https://www.icloud.com/shortcuts/ee4f5161e49b4a73895d9a68fd5ac504" class="btn btn-primary" style="margin-top: var(--spacing-md);">
+                Download Zero Drinks
+            </a>
         </div>
     </section>
 
@@ -582,9 +500,6 @@
                     <li>Tap "Done"</li>
                 </ol>
                 <p>With confirmation enabled, you'll receive a notification each morning that you can tap to run the shortcut and see your stats.</p>
-                <div class="screenshot-container">
-                    <img src="assets/automation-setup.PNG" alt="Automation setup for Zero Drinks shortcut" class="screenshot screenshot-automation">
-                </div>
             </div>
         </div>
     </section>
@@ -594,12 +509,7 @@
         <div class="container">
             <span class="privacy-badge">🔒 Privacy First</span>
             <h2>Your Data Stays On Your Device</h2>
-            <p>These shortcuts interact only with Apple Health on your device. No data is transmitted to external servers, no accounts required, no tracking. Your health information is yours alone.</p>
-
-            <h3 style="margin-top: var(--spacing-lg);">Why These Shortcuts?</h3>
-            <p>Apple Health can track alcohol consumption, but it lacks built-in support for quick drink logging and calculating averages. These shortcuts fill that gap while maintaining your privacy.</p>
-
-            <p style="margin-top: var(--spacing-md);">The Zero Drinks shortcut was created to solve a specific problem: Apple Health ignores days without data, which skews averages. By automatically filling in zero-drink days, you get an accurate average of your actual consumption.</p>
+            <p>These shortcuts interact only with Apple Health on your device—no data is transmitted to external servers, no accounts required, no tracking. Apple Health lacks built-in support for quick drink logging and accurate averages (it ignores days without data, which skews the numbers). These shortcuts fill that gap while keeping your health information completely private.</p>
 
             <div class="footer-links" style="margin-top: var(--spacing-lg);">
                 <a href="https://github.com" class="btn btn-secondary">View on GitHub</a>
