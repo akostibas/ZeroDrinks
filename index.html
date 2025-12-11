@@ -131,6 +131,14 @@
             font-size: 20px;
             font-weight: 600;
             color: var(--color-text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-image {
+            height: 32px;
+            width: auto;
         }
 
         nav {
@@ -444,7 +452,10 @@
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo">📊 Zero Drinks</div>
+            <div class="logo">
+                <img src="assets/zero-drinks-logo.png" alt="Zero Drinks Logo" class="logo-image">
+                Zero Drinks
+            </div>
             <nav>
                 <a href="#log-drink">Log Drink</a>
                 <a href="#zero-drinks">Zero Drinks</a>
