@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drink Tracking Shortcuts for Apple Health | Simple & Private</title>
+    <meta name="description" content="Simple, privacy-focused Apple Shortcuts for tracking alcohol consumption in Apple Health. Quick logging and sliding window analysis.">
+    <meta name="keywords" content="apple shortcuts, apple health, alcohol tracking, drink tracking, health monitoring, ios shortcuts">
+    <meta name="author" content="Drink Tracking Shortcuts">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Drink Tracking Shortcuts for Apple Health">
+    <meta property="og:description" content="Simple, privacy-focused alcohol tracking using Apple Shortcuts">
+
+    <!-- Apple specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --color-primary: #007AFF;
+            --color-accent: #34C759;
+            --color-warning: #FF9500;
+            --color-bg: #FFFFFF;
+            --color-bg-secondary: #F5F5F7;
+            --color-text-primary: #1D1D1F;
+            --color-text-secondary: #86868B;
+            --color-border: #D2D2D7;
+            --max-width: 1200px;
+            --spacing-xs: 8px;
+            --spacing-sm: 16px;
+            --spacing-md: 32px;
+            --spacing-lg: 48px;
+            --spacing-xl: 80px;
+            --border-radius-sm: 8px;
+            --border-radius-md: 12px;
+            --border-radius-lg: 16px;
+        }
+
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
+            background-color: var(--color-bg);
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        section {
+            padding: var(--spacing-xl) 0;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--color-bg);
+            border-bottom: 1px solid var(--color-border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--spacing-sm);
+            padding-bottom: var(--spacing-sm);
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+        }
+
+        nav {
+            display: flex;
+            gap: var(--spacing-md);
+        }
+
+        nav a {
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        nav a:hover {
+            color: var(--color-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-secondary) 100%);
+        }
+
+        .hero h1 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .hero .intro {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: var(--border-radius-md);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-secondary:hover {
+            opacity: 1;
+            background-color: var(--color-primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .feature-card {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-md);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 64px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .feature-card h3 {
+            color: var(--color-text-primary);
+        }
+
+        .feature-card p {
+            font-size: 16px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+
+        .feature-list li {
+            padding: var(--spacing-xs) 0;
+            padding-left: 24px;
+            position: relative;
+            color: var(--color-text-secondary);
+            font-size: 16px;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--color-accent);
+            font-weight: bold;
+        }
+
+        /* Shortcut Sections */
+        .shortcut-section {
+            background-color: var(--color-bg-secondary);
+        }
+
+        .shortcut-section:nth-child(even) {
+            background-color: var(--color-bg);
+        }
+
+        .shortcut-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: start;
+        }
+
+        .shortcut-info h2 {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+        }
+
+        .shortcut-icon {
+            font-size: 48px;
+        }
+
+        .shortcut-details {
+            background-color: white;
+            border-radius: var(--border-radius-lg);
+            padding: var(--spacing-md);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Installation Section */
+        .installation {
+            background-color: var(--color-bg);
+        }
+
+        .installation-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .step {
+            text-align: center;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 48px;
+            height: 48px;
+            line-height: 48px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            color: white;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .step h3 {
+            font-size: 20px;
+        }
+
+        .step p {
+            font-size: 16px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--color-bg-secondary);
+            text-align: center;
+        }
+
+        .about .container {
+            max-width: 800px;
+        }
+
+        .privacy-badge {
+            display: inline-block;
+            background-color: var(--color-accent);
+            color: white;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: var(--border-radius-md);
+            font-weight: 600;
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-text-primary);
+            color: white;
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        footer a {
+            color: white;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: var(--spacing-md);
+            justify-content: center;
+            margin-top: var(--spacing-sm);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 28px;
+            }
+
+            h3 {
+                font-size: 20px;
+            }
+
+            .hero .tagline {
+                font-size: 20px;
+            }
+
+            .hero .intro {
+                font-size: 18px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .shortcut-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            section {
+                padding: var(--spacing-lg) 0;
+            }
+        }
+
+        /* Coming Soon Badge */
+        .coming-soon {
+            display: inline-block;
+            background-color: var(--color-warning);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: var(--spacing-xs);
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">🍺 Drink Tracking</div>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#log-drink">Log Drink</a>
+                <a href="#zero-drinks">Zero Drinks</a>
+                <a href="#installation">Install</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Drink Tracking Shortcuts for Apple Health</h1>
+            <p class="tagline">Simple, privacy-focused alcohol consumption tracking</p>
+            <p class="intro">Track your drinking habits directly in Apple Health with two powerful shortcuts. One-tap logging and intelligent insights, all while keeping your data completely private on your device.</p>
+            <div class="cta-buttons">
+                <a href="#log-drink" class="btn btn-primary">Download Log Drink</a>
+                <a href="#zero-drinks" class="btn btn-primary">Download Zero Drinks</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Overview -->
+    <section id="features">
+        <div class="container">
+            <h2 style="text-align: center;">Choose Your Tracking Style</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🍺</div>
+                    <h3>Log Drink</h3>
+                    <p>Quick and simple one-tap tracking</p>
+                    <ul class="feature-list">
+                        <li>Add to home screen or watch</li>
+                        <li>Log drinks in seconds</li>
+                        <li>Perfect for casual tracking</li>
+                        <li>No configuration needed</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Zero Drinks</h3>
+                    <p>Comprehensive tracking with insights</p>
+                    <ul class="feature-list">
+                        <li>Sliding window averages</li>
+                        <li>Fills in zero-drink days</li>
+                        <li>Positive reinforcement</li>
+                        <li>Reflective prompts</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Log Drink Section -->
+    <section id="log-drink" class="shortcut-section">
+        <div class="container">
+            <div class="shortcut-content">
+                <div class="shortcut-info">
+                    <h2><span class="shortcut-icon">🍺</span> Log Drink</h2>
+                    <p>The simplest way to track your alcohol consumption. One tap adds a standard drink to Apple Health.</p>
+                    <p>Perfect for adding to your iPhone home screen, lock screen, or Apple Watch complication. Track in the moment without opening any apps.</p>
+                    <a href="#" class="btn btn-primary download-btn" data-shortcut="log-drink">
+                        Download Log Drink <span class="coming-soon">Coming Soon</span>
+                    </a>
+                </div>
+                <div class="shortcut-details">
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li>One-tap logging</li>
+                        <li>Adds 1 standard drink to Apple Health</li>
+                        <li>Works from home screen</li>
+                        <li>Works from lock screen</li>
+                        <li>Works from Apple Watch</li>
+                        <li>No configuration required</li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-md);">How to Use</h3>
+                    <p>After installation, add the shortcut to your home screen or watch face. Each time you have a drink, simply tap the shortcut. That's it!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Zero Drinks Section -->
+    <section id="zero-drinks" class="shortcut-section">
+        <div class="container">
+            <div class="shortcut-content">
+                <div class="shortcut-info">
+                    <h2><span class="shortcut-icon">📊</span> Zero Drinks</h2>
+                    <p>Advanced tracking with intelligent insights. This shortcut goes beyond simple logging to help you understand your drinking patterns.</p>
+                    <p>Automatically fills in zero-drink days (which Apple Health normally ignores), calculates your rolling average, and provides thoughtful feedback.</p>
+                    <a href="#" class="btn btn-primary download-btn" data-shortcut="zero-drinks">
+                        Download Zero Drinks <span class="coming-soon">Coming Soon</span>
+                    </a>
+                </div>
+                <div class="shortcut-details">
+                    <h3>Key Features</h3>
+                    <ul class="feature-list">
+                        <li>Configurable sliding window (7, 14, or 30 days)</li>
+                        <li>Automatically adds "0 drinks" for missing days</li>
+                        <li>Calculates accurate averages</li>
+                        <li>Positive messages for zero-drink days</li>
+                        <li>Reflective prompts after drinking</li>
+                        <li>Daily notifications with insights</li>
+                    </ul>
+
+                    <h3 style="margin-top: var(--spacing-md);">How It Works</h3>
+                    <p>Run this shortcut once daily (set up an automation!). If you had zero drinks yesterday, you'll get a positive message. If you did drink, it asks "How do you feel?" along with your rolling average.</p>
+                    <p>The shortcut ensures Apple Health has complete data by adding zero-drink entries for days you didn't log anything, giving you accurate trends and averages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Installation Section -->
+    <section id="installation" class="installation">
+        <div class="container">
+            <h2 style="text-align: center;">How to Install</h2>
+            <div class="installation-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Download</h3>
+                    <p>Tap the download link above on your iPhone or iPad</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Add Shortcut</h3>
+                    <p>Review the shortcut actions and tap "Add Shortcut"</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Grant Permissions</h3>
+                    <p>Allow access to Apple Health when prompted</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Customize</h3>
+                    <p>Add to home screen, lock screen, or watch for quick access</p>
+                </div>
+            </div>
+
+            <div style="margin-top: var(--spacing-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
+                <h3>Adding to Home Screen</h3>
+                <p>Long press the shortcut in the Shortcuts app, select "Details", then "Add to Home Screen". You can customize the icon and name.</p>
+
+                <h3 style="margin-top: var(--spacing-md);">Adding to Apple Watch</h3>
+                <p>In the Watch app on your iPhone, scroll down to Shortcuts and enable "Show on Apple Watch". You can also add shortcuts to watch face complications.</p>
+
+                <h3 style="margin-top: var(--spacing-md);">Setting Up Automation</h3>
+                <p>For Zero Drinks, create a daily automation in the Shortcuts app that runs at a specific time (like 9 AM each morning).</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <span class="privacy-badge">🔒 Privacy First</span>
+            <h2>Your Data Stays On Your Device</h2>
+            <p>These shortcuts interact only with Apple Health on your device. No data is transmitted to external servers, no accounts required, no tracking. Your health information is yours alone.</p>
+
+            <h3 style="margin-top: var(--spacing-lg);">Why These Shortcuts?</h3>
+            <p>Apple Health is a powerful tool for tracking health metrics, but it lacks built-in support for quick drink logging and intelligent insights. These shortcuts fill that gap while maintaining your privacy.</p>
+
+            <p style="margin-top: var(--spacing-md);">The Zero Drinks shortcut was created to solve a specific problem: Apple Health ignores days without data, which skews averages and trends. By automatically filling in zero-drink days, you get accurate insights into your actual consumption patterns.</p>
+
+            <div class="footer-links" style="margin-top: var(--spacing-lg);">
+                <a href="https://github.com" class="btn btn-secondary">View on GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Drink Tracking Shortcuts. Open source and free to use.</p>
+            <div class="footer-links">
+                <a href="https://github.com">GitHub</a>
+                <a href="#about">Privacy</a>
+                <a href="mailto:feedback@example.com">Feedback</a>
+            </div>
+            <p style="margin-top: var(--spacing-sm); font-size: 14px;">Built with a focus on privacy, simplicity, and seamless integration with Apple Health.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && document.querySelector(href)) {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Placeholder functionality for download buttons
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const shortcutName = btn.dataset.shortcut;
+                const displayName = shortcutName === 'log-drink' ? 'Log Drink' : 'Zero Drinks';
+                alert(`The ${displayName} shortcut will be available soon!\n\nStar the GitHub repository to get notified when it's ready for download.`);
+            });
+        });
+
+        // Add active state to nav links on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.style.color = '';
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.style.color = 'var(--color-primary)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
