@@ -460,7 +460,7 @@
         <div class="container">
             <h1>Drink Tracking Shortcuts for Apple Health</h1>
             <p class="tagline">Simple, privacy-focused alcohol consumption tracking</p>
-            <p class="intro">Track your drinking habits directly in Apple Health with two powerful shortcuts. One-tap logging and intelligent insights, all while keeping your data completely private on your device.</p>
+            <p class="intro">Track your drinking habits directly in Apple Health with two powerful shortcuts that work together. Log Drink provides one-tap logging, while Zero Drinks delivers intelligent insights and maintains your data—all while keeping everything completely private on your device.</p>
             <div class="cta-buttons">
                 <a href="#log-drink" class="btn btn-primary">Download Log Drink</a>
                 <a href="#zero-drinks" class="btn btn-primary">Download Zero Drinks</a>
@@ -471,23 +471,24 @@
     <!-- Features Overview -->
     <section id="features">
         <div class="container">
-            <h2 style="text-align: center;">Choose Your Tracking Style</h2>
+            <h2 style="text-align: center;">Two Shortcuts That Work Together</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto var(--spacing-lg); font-size: 20px;">Use both shortcuts for the complete experience: Log Drink ensures your Apple Health data is accurate, and Zero Drinks reads and maintains that data to provide meaningful insights.</p>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🍺</div>
                     <h3>Log Drink</h3>
-                    <p>Quick and simple one-tap tracking</p>
+                    <p>Creates the data</p>
                     <ul class="feature-list">
                         <li>Add to home screen or watch</li>
                         <li>Log drinks in seconds</li>
-                        <li>Perfect for casual tracking</li>
+                        <li>Ensures accurate Apple Health data</li>
                         <li>No configuration needed</li>
                     </ul>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>Zero Drinks</h3>
-                    <p>Comprehensive tracking with insights</p>
+                    <p>Reads and maintains the data</p>
                     <ul class="feature-list">
                         <li>Sliding window averages</li>
                         <li>Fills in zero-drink days</li>
@@ -553,8 +554,9 @@
                     </ul>
 
                     <h3 style="margin-top: var(--spacing-md);">How It Works</h3>
-                    <p>Run this shortcut once daily (set up an automation!). If you had zero drinks yesterday, you'll get a positive message. If you did drink, it asks "How do you feel?" along with your rolling average.</p>
+                    <p>This shortcut requires setting up a daily automation to run automatically. If you had zero drinks yesterday, you'll get a positive message. If you did drink, it asks "How do you feel?" along with your rolling average.</p>
                     <p>The shortcut ensures Apple Health has complete data by adding zero-drink entries for days you didn't log anything, giving you accurate trends and averages.</p>
+                    <p><strong>Recommended automation:</strong> Run 1 hour after sunrise with confirmation enabled.</p>
                 </div>
             </div>
         </div>
@@ -594,8 +596,19 @@
                 <h3 style="margin-top: var(--spacing-md);">Adding to Apple Watch</h3>
                 <p>In the Watch app on your iPhone, scroll down to Shortcuts and enable "Show on Apple Watch". You can also add shortcuts to watch face complications.</p>
 
-                <h3 style="margin-top: var(--spacing-md);">Setting Up Automation</h3>
-                <p>For Zero Drinks, create a daily automation in the Shortcuts app that runs at a specific time (like 9 AM each morning).</p>
+                <h3 style="margin-top: var(--spacing-md);">Setting Up Automation for Zero Drinks</h3>
+                <p><strong>Important:</strong> Zero Drinks requires creating an automation to run daily. Here's how:</p>
+                <ol style="text-align: left; max-width: 600px; margin: var(--spacing-sm) auto; color: var(--color-text-secondary); line-height: 1.8;">
+                    <li>Open the Shortcuts app and tap the "Automation" tab</li>
+                    <li>Tap "+" to create a new automation</li>
+                    <li>Choose "Time of Day"</li>
+                    <li>Select "Sunrise" and set to "1 hour after"</li>
+                    <li>Set to run daily</li>
+                    <li>Tap "Next" and search for the "Zero Drinks" shortcut</li>
+                    <li>Disable "Run Immediately" to keep confirmation enabled</li>
+                    <li>Tap "Done"</li>
+                </ol>
+                <p>With confirmation enabled, you'll receive a notification each morning that you can tap to run the shortcut and see your stats.</p>
             </div>
         </div>
     </section>
