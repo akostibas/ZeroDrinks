@@ -11,7 +11,7 @@ This repository hosts a single-page website that provides two Apple Shortcuts de
 
 ## Website
 
-Visit: [https://[username].github.io/drinking-shortcut/](https://[username].github.io/drinking-shortcut/)
+Visit: [https://akostibas.github.io/ZeroDrinks/](https://akostibas.github.io/ZeroDrinks/)
 
 ## The Shortcuts
 
